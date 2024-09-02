@@ -1793,6 +1793,7 @@ GameObject:
   - component: {fileID: 1879944112}
   - component: {fileID: 1879944111}
   - component: {fileID: 1879944110}
+  - component: {fileID: 1879944114}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1918,6 +1919,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 134.82199, y: 186.994, z: -175.503}
+--- !u!114 &1879944114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879944109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23097585c87489b4cb2e000e2b11c083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  cameraOffset: {x: 0, y: 7, z: -10}
 --- !u!1001 &1892945143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2017,7 +2032,7 @@ PrefabInstance:
     - target: {fileID: 1504851061828481204, guid: 56dd9b208fd1727459c740a98025ac2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.45
+      value: 3.02
       objectReference: {fileID: 0}
     - target: {fileID: 1504851061828481204, guid: 56dd9b208fd1727459c740a98025ac2a,
         type: 3}
@@ -2073,8 +2088,8 @@ SceneRoots:
   - {fileID: 33492606}
   - {fileID: 721473410}
   - {fileID: 737604822}
-  - {fileID: 1165397824}
   - {fileID: 1879944113}
+  - {fileID: 1165397824}
   - {fileID: 473955782}
   - {fileID: 1224261035}
   - {fileID: 1295118923}

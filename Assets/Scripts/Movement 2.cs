@@ -16,6 +16,8 @@ public class Movement2 : MonoBehaviour
     public float velocityMagnitude;
     public bool canJump;
     public Collision collider;
+
+    public int totalItems;
     public int collectibles = 0;
 
     public TMPro.TextMeshProUGUI scoreText;
@@ -25,10 +27,18 @@ public class Movement2 : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         canJump = true;
+
+        totalItems = GameObject.FindGameObjectsWithTag("Item").Length;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        Movement();
+        UpdateScore();
+    }
+
+    private void Movement()
     {
         inputVector.x = Input.GetAxis("Horizontal");
         inputVector.y = Input.GetAxis("Vertical");
@@ -43,8 +53,11 @@ public class Movement2 : MonoBehaviour
             rigidBody.AddForce(0f, jumpForce, 0f, ForceMode.Impulse);
             canJump = false;
         }
+    }
 
-
+    private void UpdateScore()
+    {
+        scoreText.text = collectibles.ToString() + "/" + totalItems.ToString();
     }
 
     private void OnCollisionEnter(Collision collider)
@@ -63,7 +76,7 @@ public class Movement2 : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        if (collider.gameObject.CompareTag("Goal") && collectibles >= 5)
+        if (collider.gameObject.CompareTag("Goal") && collectibles == totalItems)
         {
             Debug.Log("Win");
 
@@ -74,11 +87,15 @@ public class Movement2 : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        if (collider.gameObject.CompareTag("Item"))
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item"))
         {
-            Destroy(collider.gameObject);
-            collectibles ++;
-            scoreText.text = collectibles.ToString();
+            Destroy(other.gameObject);
+            collectibles++;
         }
     }
 }
